@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ title }}</title>
+  <style>
+    body { font-family: sans-serif; max-width: 800px; margin: 0 auto; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="/">Home</a>
+    <a href="../blog.njk">Blog</a>
+    <a href="/">Connect</a>
+  </header>
+  <main>
+    {{ content | safe }}  <!-- Content goes here -->
+  </main>
+</body>
+</html>
