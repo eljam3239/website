@@ -8,17 +8,37 @@
   </style>
 </head>
 <body>
-  <header>
+  <header> 
     <a href="/">Home</a>
-    <a href="../blog.njk">Blog</a>
+    <a href="/blog">Blog</a>
     <a href="/">Connect</a>
   </header>
   <main>
-    <h1>Blog</h1>
+    
+<h1>Posts</h1>
 
-<h1>Latest Posts</h1>
-
-  <!-- Content goes here -->
+<ul class="post-list">
+  
+    <li class="post-item">
+      <h2><a href="/posts/testpost-1/">First Post</a></h2>
+      <time class="post-date">Published: 2025-04-17</time>
+      <div class="post-excerpt">
+        <p>This is the first post on this site. The site uses a simple SSG called 11ty (Eleventy) to render markdown to HTML.
+I'm going to use this site as a...
+      </div>
+      <a href="/posts/testpost-1/" class="read-more">Read more →</a>
+    </li>
+  
+    <li class="post-item">
+      <h2><a href="/posts/3months/">3 months without nicotine</a></h2>
+      <time class="post-date">Published: 2025-04-17</time>
+      <div class="post-excerpt">
+        <p>Sometime in the summer after my freshman year, I started vaping on a whim, and thus began a 6 year dependence on nicotine. Over time I alternated...
+      </div>
+      <a href="/posts/3months/" class="read-more">Read more →</a>
+    </li>
+  
+</ul>  <!-- Content goes here -->
   </main>
 </body>
 </html>
