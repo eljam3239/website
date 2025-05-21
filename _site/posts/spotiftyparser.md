@@ -2,6 +2,7 @@
 title: Stupid Webapp to Solve Even Stupider (more stupid?) Problem
 date: 2025-04-30
 layout: layout.njk
+exerpt: "Test"
 ---
 
 Scenerio: I like listening to a varitety of music. Many songs and bands come from places that don't speak English. Some of those places use different letters/alphabets/written language systems. 

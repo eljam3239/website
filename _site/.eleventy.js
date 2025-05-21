@@ -1,14 +1,23 @@
+// .eleventy.js
 module.exports = function(eleventyConfig) {
-    // Debug collections
-    eleventyConfig.on('eleventy.before', () => {
-      console.log("Processing posts...");
+  eleventyConfig.addCollection("posts", function(collectionApi) {
+    const posts = collectionApi.getFilteredByGlob("posts/*.md").reverse();
+    console.log("Found posts:");
+    posts.forEach(post => {
+      console.log(`- ${post.inputPath} (${post.date.toISOString()})`);
     });
-  
-    eleventyConfig.addCollection("posts", function(collectionApi) {
-      const posts = collectionApi.getFilteredByGlob("posts/*.md").reverse();
-      console.log(`Found ${posts.length} posts`); // Debug line
-      return posts;
-    });
-  
-    // ... rest of your config
+    return posts;
+  });
+
+  // Copy any static assets
+  eleventyConfig.addPassthroughCopy("css");
+  eleventyConfig.addPassthroughCopy("images");
+
+  return {
+    dir: {
+      input: ".",
+      includes: "_includes",
+      output: "_site"
+    }
   };
+};

@@ -2,19 +2,108 @@
 title: "Home"
 layout: layout.njk
 ---
+
 <h1>About</h1>
 <p>Hi, I'm Eli James. I'm a recent Queen's CS graduate interested in powerlifting, books, and programming.</p>
+
 <h1>Latest Posts</h1>
 
-<ul>
-  {% for post in collections.posts %}
-    <li>
-      <a href="{{ post.url }}">{{ post.data.title }}</a>
-      (Published: {{ post.date.toISOString().slice(0, 10) }})
-
-    </li>
+{% set recentPosts = collections.posts.slice(0, 4) %}
+{% if recentPosts.length > 0 %}
+<div class="post-grid">
+  {% for post in recentPosts %}
+  <article class="post-card">
+    <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+    <time datetime="{{ post.date.toISOString() }}">
+      {{ post.date.toISOString().slice(0, 10) }}
+    </time>
+    <div class="excerpt">
+      {{ post.templateContent | safe | truncate(150) }}
+    </div>
+    <a href="{{ post.url }}" class="read-more">Read more →</a>
+  </article>
   {% endfor %}
-  <li>
-  <a href="/blog/">See More</a>
-  </li>
-</ul>
+</div>
+{% else %}
+<p>No posts found. Create some Markdown files in your <code>posts/</code> directory.</p>
+{% endif %}
+
+<a href="/blog/" class="view-all">View All Posts →</a>
+
+<style>
+  .post-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+
+  .post-card {
+    /* border: 1px solid var(--text-color); */
+    padding: 1.5rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    background-color: var(--background);
+    color: var(--text-color);
+  }
+
+  .post-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .post-card h2 {
+    margin-top: 0;
+    font-size: 1.25rem;
+    color: var(--text-color);
+  }
+  .post-card h2 a,
+  .post-card h2 a:visited {
+    color: var(--text-color);
+    text-decoration: none;
+  }
+
+  .post-card h2 a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+  }
+  .post-card time {
+    display: block;
+    color: var(--text-color);
+    font-size: 0.9em;
+    margin: 0.5rem 0;
+    opacity: 0.7;
+  }
+
+  .excerpt {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    opacity: 0.85;
+  }
+
+  .read-more {
+    font-size: 0.9em;
+    color: var(--accent-color);
+    text-decoration: none;
+  }
+
+  .read-more:hover {
+    color: var(--accent-hover);
+  }
+
+  .view-all {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: var(--accent-color);
+    border-radius: 4px;
+    text-decoration: none;
+    color: #ffffff;
+    transition: background 0.2s ease;
+  }
+
+  .view-all:hover {
+    background: var(--accent-hover);
+  }
+</style>

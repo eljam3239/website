@@ -37,7 +37,6 @@
       padding: 1rem 0;
       display: flex;
       gap: 1rem;
-      
     }
 
     header a {
@@ -90,17 +89,46 @@
       position: fixed;
       top: 1rem;
       right: 1rem;
-      padding: 0.5rem 1rem;
-      background-color: var(--accent-color);
-      color: white;
+      background: none;
       border: none;
       cursor: pointer;
-      border-radius: 5px;
+      padding: 0.5rem;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+    }
+
+    .theme-icon {
+      width: 100%;
+      height: 100%;
+      fill: var(--text-color);
+      transition: fill 0.3s;
+    }
+
+    .sun {
+      display: inline;
+    }
+
+    .moon {
+      display: none;
+    }
+
+    [data-theme="dark"] .sun {
+      display: none;
+    }
+
+    [data-theme="dark"] .moon {
+      display: inline;
     }
   </style>
 </head>
 <body>
-  <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme">
+    <svg class="theme-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path class="sun" d="M12 4.5V2m0 20v-2.5m7.07-14.14l1.77-1.77m-14.14 14.14l-1.77 1.77m16.97 0l-1.77-1.77m-14.14-14.14l1.77 1.77M4.5 12H2m20 0h-2.5M12 7a5 5 0 100 10 5 5 0 000-10z"/>
+      <path class="moon" d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />
+    </svg>
+  </button>
 
   <header>
     <a href="/">Home</a>
@@ -147,7 +175,6 @@
       localStorage.setItem('theme', newTheme);
     }
 
-    // On page load, set theme from localStorage
     (function () {
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme) {

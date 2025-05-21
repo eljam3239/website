@@ -2,6 +2,7 @@
 title: 3 months without nicotine
 date: 2025-04-17
 layout: layout.njk
+exerpt: "Test excerpt"
 ---
 
 Sometime in the summer after my freshman year, I started vaping on a whim, and thus began a 6 year dependence on nicotine. Over time I alternated between vaping, cigarettes and nicotine pouches.
