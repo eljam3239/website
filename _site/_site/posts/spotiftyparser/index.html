@@ -1,80 +1,159 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <title>Stupid Webapp to Solve Even Stupider (more stupid?) Problem</title>
   <style>
-    body { font-family: sans-serif; max-width: 800px; margin: 0 auto; }
+    :root {
+      --bg-color-light: #FFFFEC;
+      --text-color-light: #597E52;
+      --bg-color-dark: #597E52;
+      --text-color-dark: #FFFFEC;
+
+      --accent-color: #333;
+      --accent-hover: #111;
+    }
+
+    [data-theme="light"] {
+      --bg-color: var(--bg-color-light);
+      --text-color: var(--text-color-light);
+    }
+
+    [data-theme="dark"] {
+      --bg-color: var(--bg-color-dark);
+      --text-color: var(--text-color-dark);
+    }
+
+    body {
+      font-family: sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    header {
+      padding: 1rem 0;
+      display: flex;
+      gap: 1rem;
+      
+    }
+
+    header a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
     .footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: #333; 
-  color: white;
-  padding: 1rem 0;
-  z-index: 100;
-}
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: var(--accent-color);
+      color: white;
+      padding: 1rem 0;
+      z-index: 100;
+    }
 
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
 
-.footer-left {
-  font-size: 0.9rem;
-}
+    .footer-left {
+      font-size: 0.9rem;
+    }
 
-.footer-right {
-  display: flex;
-  gap: 1rem;
-}
+    .footer-right {
+      display: flex;
+      gap: 1rem;
+    }
 
-.footer-icon {
-  width: 24px;
-  height: 24px;
-  fill: white;
-  transition: fill 0.3s ease;
-}
+    .footer-icon {
+      width: 24px;
+      height: 24px;
+      fill: white;
+      transition: fill 0.3s ease;
+    }
 
-.footer-icon:hover {
-  fill: #111; 
-}
+    .footer-icon:hover {
+      fill: var(--accent-hover);
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.5rem 1rem;
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
   </style>
 </head>
 <body>
-  <header> 
+  <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+
+  <header>
     <a href="/">Home</a>
     <a href="/blog">Blog</a>
     <a href="/">Connect</a>
   </header>
+
   <main>
-    <p>Scenerio: I like listening to a varitety of music. Many songs and bands come from places that don't speak English. Some of those places use different letters/alphabets/written language systems. In this scenario I have just found some band I like, that is a Chinese band whose band and song names are written in Mandarin.
-Problem: How do I figure out who these people are if I cannot copy-paste that artist or song name straight from the SPotify desktop app?</p>
-  <!-- Content goes here -->
+    <p>Scenerio: I like listening to a varitety of music. Many songs and bands come from places that don't speak English. Some of those places use different letters/alphabets/written language systems.</p>
+<p>In this scenario I have just found some band I like, that is a Chinese band whose band and song names are written in Mandarin.</p>
+<p>I would like to be able to tell my friend 'Hey, I just found this new band ___ ', but I cannot do that without knowing how to pronounce it, which I cannot do unless I can copy paste that artist/song name into Google Translate and have that say it to me out loud.</p>
+<p>The insanely frustrating aspect of this whole dilemna is that you cannot copy paste artist or song names from Spotify Desktop. If you try to drag-click them into your broswer, you see something like &quot;https://open.spotify.com/track/1fmoCZ6mtMiqA5GHWPcZz9&quot;, as opposed to any readable text about the artist or song.</p>
+<p>Problem: How do I figure out who these people are if I cannot copy-paste that artist or song name straight from the Spotify desktop app?</p>
+<p>Solution: We need to turn that link into a copy-pastable string so that the tiny number of people upset with this flaw can move on with their lives.</p>
+
   </main>
+
   <footer class="footer">
-  <div class="footer-content">
-    <div class="footer-left">
-      &copy; 2025 Eli James
+    <div class="footer-content">
+      <div class="footer-left">
+        &copy; 2025 Eli James
+      </div>
+      <div class="footer-right">
+        <a href="https://www.youtube.com/@elijames7574" target="_blank" aria-label="YouTube">
+          <svg class="footer-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+          </svg>
+        </a>
+        <a href="https://github.com/eljam3239" target="_blank" aria-label="GitHub">
+          <svg class="footer-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+        </a>
+      </div>
     </div>
-    <div class="footer-right">
-      <a href="https://www.youtube.com/@elijames7574" target="_blank" aria-label="YouTube">
-        <svg class="footer-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
-        </svg>
-      </a>
-      <a href="https://github.com/eljam3239" target="_blank" aria-label="GitHub">
-        <svg class="footer-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-        </svg>
-      </a>
-    </div>
-  </div>
-</footer>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    }
+
+    // On page load, set theme from localStorage
+    (function () {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      }
+    })();
+  </script>
 </body>
 </html>
