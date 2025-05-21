@@ -24,20 +24,46 @@
       --text-color: var(--text-color-dark);
     }
 
+    
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
     body {
-      font-family: sans-serif;
-      max-width: 800px;
-      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
       background-color: var(--bg-color);
       color: var(--text-color);
+      font-family: sans-serif;
       transition: background-color 0.3s, color 0.3s;
+    }
+
+    .content-wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 1rem; 
+      display: flex;
+      flex-direction: column;
+      flex: 1; /* Make it grow to fill available space */
     }
 
     header {
       padding: 1rem 0;
       display: flex;
       gap: 1rem;
+      margin: 0; /* remove margin: 0 auto */
+      max-width: none; /* remove fixed width from header */
     }
+
+    main {
+      flex: 1;
+      margin: 0;
+      max-width: none;
+      width: 100%;
+    }
+
 
     header a {
       color: var(--text-color);
@@ -46,14 +72,9 @@
     }
 
     .footer {
-      position: fixed;
-      left: 0;
-      bottom: 0;
-      width: 100%;
       background-color: var(--accent-color);
       color: white;
       padding: 1rem 0;
-      z-index: 100;
     }
 
     .footer-content {
@@ -64,14 +85,8 @@
       margin: 0 auto;
       padding: 0 2rem;
     }
-
-    .footer-left {
-      font-size: 0.9rem;
-    }
-
-    .footer-right {
-      display: flex;
-      gap: 1rem;
+    .footer-icon-spacing {
+      margin-right: 1rem; /* Adjust this value as needed */
     }
 
     .footer-icon {
@@ -105,21 +120,11 @@
       transition: fill 0.3s;
     }
 
-    .sun {
-      display: inline;
-    }
+    .sun { display: inline; }
+    .moon { display: none; }
 
-    .moon {
-      display: none;
-    }
-
-    [data-theme="dark"] .sun {
-      display: none;
-    }
-
-    [data-theme="dark"] .moon {
-      display: inline;
-    }
+    [data-theme="dark"] .sun { display: none; }
+    [data-theme="dark"] .moon { display: inline; }
   </style>
 </head>
 <body>
@@ -130,25 +135,25 @@
     </svg>
   </button>
 
-  <header>
-    <a href="/">Home</a>
-    <a href="/blog">Blog</a>
-    <a href="/">Connect</a>
-  </header>
+  <div class="content-wrapper">
+    <header>
+      <a href="/">Home</a>
+      <a href="/blog">Blog</a>
+      <a href="/">Connect</a>
+    </header>
 
-  <main>
-    <p>This is the first post on this site. The site uses a simple SSG called 11ty (Eleventy) to render markdown to HTML.
+    <main>
+      <p>This is the first post on this site. The site uses a simple SSG called 11ty (Eleventy) to render markdown to HTML.
 I'm going to use this site as a central point of access to my socials and blog posts about lifting/books/programming.</p>
 
-  </main>
+    </main>
+  </div>
 
   <footer class="footer">
     <div class="footer-content">
-      <div class="footer-left">
-        &copy; 2025 Eli James
-      </div>
+      <div class="footer-left">&copy; 2025 Eli James</div>
       <div class="footer-right">
-        <a href="https://www.youtube.com/@elijames7574" target="_blank" aria-label="YouTube">
+        <a href="https://www.youtube.com/@elijames7574" target="_blank" aria-label="YouTube" class="footer-icon-spacing">
           <svg class="footer-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
           </svg>
