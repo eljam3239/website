@@ -18,3 +18,55 @@ permalink: /blog/
     </li>
   {% endfor %}
 </ul>
+
+<style>
+  
+  .post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  
+  .post-item {
+    margin-bottom: 2rem;
+  }
+
+  
+  .post-item h2 a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .post-item h2 a:hover {
+    color: var(--accent-hover);
+  }
+
+  
+  .post-date {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color)
+    font-size: 0.9rem;
+    font-weight: 500;
+    opacity: 0.7;
+  }
+
+  
+  .read-more {
+    font-size: 0.9em;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .read-more:hover {
+    color: var(--accent-hover);
+  }
+
+  /* General links (outside post titles and read-more) */
+  a:visited {
+    color: var(--text-color);
+  }
+</style>
