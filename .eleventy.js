@@ -19,6 +19,6 @@ module.exports = function(eleventyConfig) {
       includes: "_includes",
       output: "_site"
     },
-    pathPrefix: "/website/",
+    pathPrefix: "/website",
   };
 };
