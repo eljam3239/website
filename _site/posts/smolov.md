@@ -1,5 +1,5 @@
 ---
-title: SMOLOV JR. 3 week bench
+title: SMOLOV JR. 3 Week Bench Program
 date: 2025-04-30
 layout: layout.njk
 ---
