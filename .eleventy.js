@@ -12,6 +12,8 @@ module.exports = function(eleventyConfig) {
   // Copy any static assets
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("images");
+  eleventyConfig.addPassthroughCopy("website/eliresumemay2025.pdf");
+
 
   return {
     dir: {
