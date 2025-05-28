@@ -42,3 +42,7 @@ The hardest aspect of this project was the tug of war between WSL and the variou
 
 I suspect that WSL, and its finicky permissions, are what clashed with npm most, and why containerization/virtual envs are so common in the 'real' world.
 
+### Updates:
+I have added a prepared query, linking to Google Translate, which autodetects the language and pronounces the string previously produced. 
+
+
